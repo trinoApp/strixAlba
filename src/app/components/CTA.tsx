@@ -1,8 +1,10 @@
 import { Mail, Send } from "lucide-react";
 import { useState } from "react";
-import { DARK, FORE, DIM, LIME, BORDER } from "./constants";
+import { useColors, useTheme } from "./ThemeContext";
 
 export function CTA() {
+  const { DARK, FORE, DIM, LIME, BORDER, CARD } = useColors();
+  const { theme } = useTheme();
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
@@ -21,12 +23,14 @@ export function CTA() {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const inputBg = theme === "dark" ? DARK : CARD;
+
   const inputStyle = {
     width: "100%",
     fontFamily: "Outfit, sans-serif",
     fontSize: 16,
     color: FORE,
-    backgroundColor: "transparent",
+    backgroundColor: inputBg,
     border: `1px solid ${BORDER}`,
     borderRadius: 2,
     padding: "16px 20px",
@@ -92,10 +96,7 @@ export function CTA() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  style={{
-                    ...inputStyle,
-                    backgroundColor: DARK,
-                  }}
+                  style={inputStyle}
                   placeholder="Your name"
                 />
               </div>
@@ -108,10 +109,7 @@ export function CTA() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  style={{
-                    ...inputStyle,
-                    backgroundColor: DARK,
-                  }}
+                  style={inputStyle}
                   placeholder="you@company.com"
                 />
               </div>
@@ -127,7 +125,6 @@ export function CTA() {
                 rows={5}
                 style={{
                   ...inputStyle,
-                  backgroundColor: DARK,
                   resize: "vertical",
                   minHeight: 140,
                 }}
