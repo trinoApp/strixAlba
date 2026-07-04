@@ -43,7 +43,7 @@ export function Nav() {
     >
       <div style={{ maxWidth: 1280, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
         <a href="#" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-          <OwlGlyph size={72} />
+          <OwlGlyph size={88} />
           <span style={{ fontFamily: "Unbounded, sans-serif", fontWeight: 700, fontSize: 15, color: FORE, letterSpacing: "-0.02em" }}>
             {t("nav.brand")}
           </span>

@@ -1,14 +1,16 @@
-import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
-import { OwlGlyph } from "./OwlGlyph";
-import { useColors } from "./ThemeContext";
+import { useScrollLockSteps } from "../hooks/useScrollLockSteps";
+import { useColors, useTheme } from "./ThemeContext";
 import { useTranslation } from "../i18n/context";
+
+type StepItem = { title: string; body: string; imageSrc: string };
 
 export function FlightSteps() {
   const { FORE, DIM, LIME, BORDER } = useColors();
+  const { theme } = useTheme();
   const { t, dict } = useTranslation();
-  const items = dict.flightSteps.items as { title: string; body: string }[];
-  const [open, setOpen] = useState<number | null>(0);
+  const items = dict.flightSteps.items as StepItem[];
+  const [open, setOpen] = useScrollLockSteps(items.length, { prevSectionId: "advantage", nextSectionId: "team" });
 
   return (
     <section id="steps" style={{ padding: "120px 24px", borderTop: `1px solid ${BORDER}` }}>
@@ -23,8 +25,12 @@ export function FlightSteps() {
           <p style={{ fontFamily: "Outfit, sans-serif", fontWeight: 300, fontSize: 14, color: DIM, lineHeight: 1.7, marginTop: 20 }}>
             {t("flightSteps.desc")}
           </p>
-          <div style={{ marginTop: 40, display: "flex", alignItems: "center", gap: 8 }}>
-            <OwlGlyph size={40} glowing />
+          <div style={{ marginTop: 40, display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
+            <img
+              src={items[open ?? 0].imageSrc}
+              alt={items[open ?? 0].title}
+              style={{ width: 500, height: "auto", maxHeight: 400, flexShrink: 0, filter: theme === "dark" ? "brightness(0) invert(1)" : "none" }}
+            />
           </div>
         </div>
 
@@ -37,7 +43,7 @@ export function FlightSteps() {
               >
                 <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
                   <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11, color: LIME, opacity: 0.7, flexShrink: 0 }}>{String(i + 1).padStart(2, "0")}</span>
-                  <span style={{ fontFamily: "Unbounded, sans-serif", fontWeight: 600, fontSize: "clamp(1rem, 2vw, 1.4rem)", color: FORE, letterSpacing: "-0.02em", textAlign: "left" }}>
+                  <span style={{ fontFamily: "Unbounded, sans-serif", fontWeight: 600, fontSize: "clamp(1rem, 2vw, 1.4rem)", color: open === i ? LIME : FORE, letterSpacing: "-0.02em", textAlign: "left", transition: "color 0.5s ease" }}>
                     {step.title}
                   </span>
                 </div>

@@ -59,13 +59,13 @@
   "flightSteps": {
     "label": "/ How we work",
     "heading": "TAKE FLIGHT\nSTEP BY STEP",
-    "desc": "From idea to launch to growth — a clear path forward.",
+    "desc": "From idea to launch to growth, a clear path forward.",
     "items": [
-      { "title": "Start with your idea", "body": "We align on your vision and see the full potential behind what you're building." },
-      { "title": "Plan the execution", "body": "We bring structure and clarity, mapping the smartest path from concept to product." },
-      { "title": "Build the MVP", "body": "We turn the idea into a focused product through fast, precise execution." },
-      { "title": "Launch & improve", "body": "We observe real-world usage and refine the product through continuous learning and iteration." },
-      { "title": "Support your growth", "body": "We stay with your product as it evolves, ensuring it scales with stability, precision, and long-term direction." }
+      { "title": "Start with your idea", "body": "We align on your vision and see the full potential behind what you're building.", "imageSrc": "/assets/images/strixIdea.svg" },
+      { "title": "Plan the execution", "body": "We bring structure and clarity, mapping the smartest path from concept to product.", "imageSrc": "/assets/images/strixMaps.svg" },
+      { "title": "Build the MVP", "body": "We turn the idea into a focused product through fast, precise execution.", "imageSrc": "/assets/images/strixBuilds.svg" },
+      { "title": "Launch & improve", "body": "We observe real-world usage and refine the product through continuous learning and iteration.", "imageSrc": "/assets/images/strixLaunch.svg" },
+      { "title": "Support your growth", "body": "We stay with your product as it evolves, ensuring it scales with stability, precision, and long-term direction.", "imageSrc": "/assets/images/strixGrowth.svg" }
     ]
   },
   "process": {
