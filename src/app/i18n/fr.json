@@ -10,10 +10,12 @@
   },
   "hero": {
     "eyebrow": "Studio Logiciel · Créé en 2026",
-    "heading": "TOUT CE DONT VOUS AVEZ BESOIN,",
-    "owlWord": "TOUT",
-    "heading2": "C'EST UNE",
-    "highlight": "IDÉE.",
+    "prefix": "VOTRE",
+    "headingSize": "clamp(2.8rem, 6vw, 6rem)",
+    "heading": "IDEE, NOTRE",
+    "owlWord": "CHOUETTE",
+    "heading2": "FUTURE",
+    "highlight": "PROJET.",
     "sub": "Nous réunissons les meilleurs talents de toutes les disciplines du développement logiciel pour vous offrir un partenaire de confiance pour chaque défi numérique.",
     "cta": "Prenons notre envol",
     "link": "Nos services"

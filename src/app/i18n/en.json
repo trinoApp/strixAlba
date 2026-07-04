@@ -10,6 +10,8 @@
   },
   "hero": {
     "eyebrow": "Software Studio · Est. 2026",
+    "prefix": "",
+    "headingSize": "clamp(3.3rem, 7.5vw, 7.5rem)",
     "heading": "YOU NEED",
     "owlWord": "OWL",
     "heading2": "IS AN",
