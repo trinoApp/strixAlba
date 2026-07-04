@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { ThemeProvider } from "./components/ThemeContext";
+import { ThemeProvider, useTheme } from "./components/ThemeContext";
 import { TranslationProvider } from "./i18n/context";
 import { Nav } from "./components/Nav";
 import { Hero } from "./components/Hero";
@@ -13,6 +13,7 @@ import { CTA } from "./components/CTA";
 import { Footer } from "./components/Footer";
 
 function CursorGlow() {
+  const { theme } = useTheme();
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [hovering, setHovering] = useState(false);
 
@@ -31,6 +32,11 @@ function CursorGlow() {
     return () => document.removeEventListener("mouseover", onOver);
   }, []);
 
+  const isLight = theme === "light";
+  const color = isLight ? "0,0,0" : "170,255,0";
+  const baseOpacity = isLight ? 0.3 : 0.45;
+  const hoverOpacity = isLight ? 0.3 : 0.85;
+
   return (
     <>
       <style>{`
@@ -43,10 +49,10 @@ function CursorGlow() {
             left: pos.x - 100, top: pos.y - 100,
             width: 200, height: 200,
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(170,255,0,0.15) 0%, transparent 70%)",
+            background: `radial-gradient(circle, rgba(${color},${baseOpacity}) 0%, transparent 70%)`,
             transition: "transform 0.3s ease, opacity 0.4s ease",
             transform: hovering ? "scale(1.8)" : "scale(1)",
-            opacity: hovering ? 0.65 : 0.35,
+            opacity: hovering ? hoverOpacity : baseOpacity,
           }}
         />
       </div>
