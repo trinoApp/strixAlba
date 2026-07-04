@@ -191,7 +191,7 @@ export function CTA() {
             )}
             
             <div style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11, color: DIM, lineHeight: 1.8, marginTop: 16 }}>
-              <div>Based in: Berlin · London · Remote-first</div>
+              <div>Based in: Tunis · Paris</div>
               <div>Response time: {'<'} 24h business hours</div>
             </div>
           </form>
