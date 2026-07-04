@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useColors } from "./ThemeContext";
 
 const L_EYE = { cx: 454, cy: 353 };
@@ -8,43 +8,61 @@ const MAX_IRIS_OFF = 8;
 
 export function HeroOwl() {
   const { LIME, FORE, DARK } = useColors();
+  const svgRef = useRef<SVGSVGElement>(null);
   const [[lPupX, lPupY], setLPup] = useState([0, 0]);
   const [[rPupX, rPupY], setRPup] = useState([0, 0]);
   const [[lIrisX, lIrisY], setLIris] = useState([0, 0]);
   const [[rIrisX, rIrisY], setRIris] = useState([0, 0]);
+  const lastMouse = useRef({ x: 0, y: 0 });
 
-  useEffect(() => {
-    const handleMouse = (e: MouseEvent) => {
-      const mx = (e.clientX / window.innerWidth) * 1024;
-      const my = (e.clientY / window.innerHeight) * 1024;
+  const updateEyes = (clientX: number, clientY: number) => {
+    lastMouse.current = { x: clientX, y: clientY };
+    const svg = svgRef.current;
+    if (!svg) return;
+    const rect = svg.getBoundingClientRect();
 
-      const calc = (cx: number, cy: number) => {
-        const dx = mx - cx;
-        const dy = my - cy;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 1) return { pup: [0, 0], iris: [0, 0] };
-        const normDx = dx / dist;
-        const normDy = dy / dist;
-        return {
-          pup: [normDx * Math.min(dist, MAX_PUPIL_OFF), normDy * Math.min(dist, MAX_PUPIL_OFF)],
-          iris: [normDx * Math.min(dist, MAX_IRIS_OFF), normDy * Math.min(dist, MAX_IRIS_OFF)],
-        };
+    const calc = (vbCx: number, vbCy: number) => {
+      const eyeVpX = rect.left + (vbCx / 1024) * rect.width;
+      const eyeVpY = rect.top + (vbCy / 1024) * rect.height;
+      const dx = clientX - eyeVpX;
+      const dy = clientY - eyeVpY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 1) return { pup: [0, 0], iris: [0, 0] };
+      const normDx = dx / dist;
+      const normDy = dy / dist;
+      return {
+        pup: [normDx * MAX_PUPIL_OFF, normDy * MAX_PUPIL_OFF],
+        iris: [normDx * MAX_IRIS_OFF, normDy * MAX_IRIS_OFF],
       };
-
-      const l = calc(L_EYE.cx, L_EYE.cy);
-      const r = calc(R_EYE.cx, R_EYE.cy);
-      setLPup(l.pup as [number, number]);
-      setLIris(l.iris as [number, number]);
-      setRPup(r.pup as [number, number]);
-      setRIris(r.iris as [number, number]);
     };
 
+    const l = calc(L_EYE.cx, L_EYE.cy);
+    const r = calc(R_EYE.cx, R_EYE.cy);
+    setLPup(l.pup as [number, number]);
+    setLIris(l.iris as [number, number]);
+    setRPup(r.pup as [number, number]);
+    setRIris(r.iris as [number, number]);
+  };
+
+  useEffect(() => {
+    const handleMouse = (e: MouseEvent) => updateEyes(e.clientX, e.clientY);
+    const handleRecalc = () => {
+      const { x, y } = lastMouse.current;
+      if (x || y) updateEyes(x, y);
+    };
     window.addEventListener("mousemove", handleMouse);
-    return () => window.removeEventListener("mousemove", handleMouse);
+    window.addEventListener("scroll", handleRecalc);
+    window.addEventListener("resize", handleRecalc);
+    return () => {
+      window.removeEventListener("mousemove", handleMouse);
+      window.removeEventListener("scroll", handleRecalc);
+      window.removeEventListener("resize", handleRecalc);
+    };
   }, []);
 
   return (
     <svg
+      ref={svgRef}
       viewBox="0 0 1024 1024"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
