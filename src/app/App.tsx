@@ -8,6 +8,7 @@ import { Advantage } from "./components/Advantage";
 import { FlightSteps } from "./components/FlightSteps";
 import { Team } from "./components/Team";
 import { Story } from "./components/Story";
+import { CTA } from "./components/CTA";
 import { Footer } from "./components/Footer";
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
           <FlightSteps />
           <Team />
           <Story />
+          <CTA />
           <Footer />
         </div>
       </TranslationProvider>

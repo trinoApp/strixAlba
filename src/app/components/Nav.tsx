@@ -109,7 +109,7 @@ export function Nav() {
           </button>
 
         <a
-          href="#story"
+          href="#contact"
           style={{
             fontFamily: "Outfit, sans-serif",
             fontWeight: 600,

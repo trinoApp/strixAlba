@@ -23,6 +23,9 @@ export function Footer() {
               {footerLinks[i] || key}
             </a>
           ))}
+          <a href="mailto:contact@strixalba.com" style={{ fontFamily: "Outfit, sans-serif", fontSize: 12, color: DIM, textDecoration: "none" }}>
+            contact@strixalba.com
+          </a>
         </div>
         <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11, color: DIM }}>
           {t("footer.copyright")}
