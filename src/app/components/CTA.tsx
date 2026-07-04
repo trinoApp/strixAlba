@@ -1,8 +1,10 @@
 import { Mail, Send } from "lucide-react";
 import { useState } from "react";
-import { DARK, FORE, DIM, LIME, BORDER } from "./constants";
+import { useColors, useTheme } from "./ThemeContext";
 
 export function CTA() {
+  const { DARK, FORE, DIM, LIME, BORDER, CARD } = useColors();
+  const { theme } = useTheme();
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
@@ -21,12 +23,14 @@ export function CTA() {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const inputBg = theme === "dark" ? DARK : CARD;
+
   const inputStyle = {
     width: "100%",
     fontFamily: "Outfit, sans-serif",
     fontSize: 16,
     color: FORE,
-    backgroundColor: "transparent",
+    backgroundColor: inputBg,
     border: `1px solid ${BORDER}`,
     borderRadius: 2,
     padding: "16px 20px",
@@ -46,6 +50,13 @@ export function CTA() {
 
   return (
     <section id="contact" style={{ padding: "120px 24px", borderTop: `1px solid ${BORDER}` }}>
+      <style>{`
+        #contact input::placeholder,
+        #contact textarea::placeholder {
+          color: ${DIM};
+          opacity: 0.6;
+        }
+      `}</style>
       <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }} className="flex-col lg:grid">
         <div>
           <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11, color: LIME, letterSpacing: "0.14em", textTransform: "uppercase" }}>
@@ -92,10 +103,7 @@ export function CTA() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  style={{
-                    ...inputStyle,
-                    backgroundColor: DARK,
-                  }}
+                  style={inputStyle}
                   placeholder="Your name"
                 />
               </div>
@@ -108,10 +116,7 @@ export function CTA() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  style={{
-                    ...inputStyle,
-                    backgroundColor: DARK,
-                  }}
+                  style={inputStyle}
                   placeholder="you@company.com"
                 />
               </div>
@@ -127,7 +132,6 @@ export function CTA() {
                 rows={5}
                 style={{
                   ...inputStyle,
-                  backgroundColor: DARK,
                   resize: "vertical",
                   minHeight: 140,
                 }}
