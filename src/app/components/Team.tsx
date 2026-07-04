@@ -4,7 +4,7 @@ import { useTranslation } from "../i18n/context";
 
 const IMG_MAP: Record<string, string> = {
   "Ahmed Amine Kefi": "ahmed.png",
-  "Allaa Eddine Mastouri": "alaa.png",
+  "Alaa Eddine Mastouri": "alaa.png",
   "Mohamed Islem Ben Jaballah": "islem.png",
   "Houssem Rihani": "houssem.png",
   "Mohamed Ben Abdallah": "hama.png",
@@ -12,7 +12,7 @@ const IMG_MAP: Record<string, string> = {
 };
 
 const LINKEDIN_MAP: Record<string, string> = {
-  "Allaa Eddine Mastouri": "https://www.linkedin.com/in/alaa-eddine-mastouri/",
+  "Alaa Eddine Mastouri": "https://www.linkedin.com/in/alaa-eddine-mastouri/",
   "Ahmed Amine Kefi": "https://www.linkedin.com/in/ahmed-amine-kefi-9a75a9224/",
   "Houssem Rihani": "https://www.linkedin.com/in/rihani-houssem/",
   "Mohamed Islem Ben Jaballah": "https://www.linkedin.com/in/mohamed-islem-ben-jaballah-183500208/",
@@ -22,7 +22,7 @@ const LINKEDIN_MAP: Record<string, string> = {
 
 const CV_MAP: Record<string, string> = {
   "Ahmed Amine Kefi": "Ahmed_Amine_Kefi_CV.pdf",
-  "Allaa Eddine Mastouri": "Alaa_Eddine_Mastouri_CV.pdf",
+  "Alaa Eddine Mastouri": "Alaa_Eddine_Mastouri_CV.pdf",
   "Mohamed Islem Ben Jaballah": "Mohammed_Islem_Ben_Jaballah_CV.pdf",
   "Houssem Rihani": "Houssem_Rihani_CV.pdf",
   "Mohamed Ben Abdallah": "Mohamed-Ben-Abdallah-CV.pdf",

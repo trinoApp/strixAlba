@@ -83,7 +83,7 @@
     "desc": "A small, senior team. No egos, no bureaucracy — just engineers who love building.",
     "members": [
       { "name": "Ahmed Amine Kefi", "role": "Backend Engineer / Systems Architect", "bio": "Specialized in large-scale backend systems and distributed architectures." },
-      { "name": "Allaa Eddine Mastouri", "role": "Full-Stack Developer", "bio": "Builds end-to-end web applications with focus on performance and scalability." },
+      { "name": "Alaa Eddine Mastouri", "role": "Full-Stack Developer", "bio": "Builds end-to-end web applications with focus on performance and scalability." },
       { "name": "Mohamed Islem Ben Jaballah", "role": "XR / Immersive Experiences Engineer", "bio": "Focused on VR and immersive 3D applications, bridging real-time graphics and interaction systems." },
       { "name": "Houssem Rihani", "role": "Junior Developer", "bio": "Supports full-stack development and assists in feature implementation and maintenance." },
       { "name": "Mohamed Ben Abdallah", "role": "RPA Developer", "bio": "Builds RPA solutions to automate business processes and workflows." },
