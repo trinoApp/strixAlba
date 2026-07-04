@@ -61,11 +61,11 @@
     "heading": "ENVOLEZ-VOUS\nÉTAPE PAR ÉTAPE",
     "desc": "De l'idée au lancement, jusqu'à la croissance — une voie claire vers l'avant.",
     "items": [
-      { "title": "Commencez par votre idée", "body": "Nous nous alignons sur votre vision et voyons tout le potentiel de ce que vous construisez." },
-      { "title": "Planifiez l'exécution", "body": "Nous apportons structure et clarté, traçant le chemin le plus intelligent du concept au produit." },
-      { "title": "Construisez le MVP", "body": "Nous transformons l'idée en un produit ciblé grâce à une exécution rapide et précise." },
-      { "title": "Lancez et améliorez", "body": "Nous observons l'utilisation réelle et affinons le produit grâce à un apprentissage et une itération continus." },
-      { "title": "Soutenez votre croissance", "body": "Nous restons avec votre produit à mesure qu'il évolue, garantissant qu'il évolue avec stabilité, précision et vision à long terme." }
+      { "title": "Commencez par votre idée", "body": "Nous nous alignons sur votre vision et voyons tout le potentiel de ce que vous construisez.", "imageSrc": "/assets/images/strixIdea.svg" },
+      { "title": "Planifiez l'exécution", "body": "Nous apportons structure et clarté, traçant le chemin le plus intelligent du concept au produit.", "imageSrc": "/assets/images/strixMaps.svg" },
+      { "title": "Construisez le MVP", "body": "Nous transformons l'idée en un produit ciblé grâce à une exécution rapide et précise.", "imageSrc": "/assets/images/strixBuilds.svg" },
+      { "title": "Lancez et améliorez", "body": "Nous observons l'utilisation réelle et affinons le produit grâce à un apprentissage et une itération continus.", "imageSrc": "/assets/images/strixLaunch.svg" },
+      { "title": "Soutenez votre croissance", "body": "Nous restons avec votre produit à mesure qu'il évolue, garantissant qu'il évolue avec stabilité, précision et vision à long terme.", "imageSrc": "/assets/images/strixGrowth.svg" }
     ]
   },
   "process": {

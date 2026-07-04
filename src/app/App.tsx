@@ -54,6 +54,7 @@ function CursorGlow() {
 }
 
 export default function App() {
+  window.scrollTo(0, 0);
   return (
     <ThemeProvider>
       <TranslationProvider>
