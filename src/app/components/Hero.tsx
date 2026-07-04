@@ -1,9 +1,11 @@
 import { ArrowUpRight } from "lucide-react";
 import { HeroOwl } from "./HeroOwl";
 import { useColors } from "./ThemeContext";
+import { useTranslation } from "../i18n/context";
 
 export function Hero() {
   const { LIME, DARK, FORE, DIM, BORDER } = useColors();
+  const { t } = useTranslation();
   return (
     <section style={{ minHeight: "100vh", display: "flex", alignItems: "center", position: "relative", overflow: "hidden", paddingTop: 64 }}>
       <div style={{ position: "absolute", right: "-15%", top: "50%", transform: "translateY(-50%)", width: "90%", maxWidth: 1100, opacity: 1, pointerEvents: "none" }}>
@@ -15,18 +17,18 @@ export function Hero() {
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 40 }}>
             <span style={{ width: 28, height: 1, backgroundColor: LIME, display: "inline-block" }} />
             <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11, color: LIME, letterSpacing: "0.14em", textTransform: "uppercase" }}>
-              Software Studio · Est. 2026
+              {t("hero.eyebrow")}
             </span>
           </div>
 
           <h1 style={{ fontFamily: "Unbounded, sans-serif", fontWeight: 900, fontSize: "clamp(3rem, 7vw, 7rem)", lineHeight: 1, letterSpacing: "-0.03em", color: FORE, margin: "0 0 32px" }}>
-            OWL YOU NEED<br />
-            IS AN<br />
-            <span style={{ color: LIME }}>IDEA.</span>
+            <span style={{ color: LIME }}>{t("hero.owlWord")}</span> {t("hero.heading")}<br />
+            {t("hero.heading2")}<br />
+            <span style={{ color: LIME }}>{t("hero.highlight")}</span>
           </h1>
 
           <p style={{ fontFamily: "Outfit, sans-serif", fontWeight: 300, fontSize: "clamp(1rem, 1.4vw, 1.2rem)", color: DIM, lineHeight: 1.7, maxWidth: 540, marginBottom: 48 }}>
-            We bring together top talent across every discipline of software development, giving you one trusted partner for every digital challenge.
+            {t("hero.sub")}
           </p>
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
@@ -46,7 +48,7 @@ export function Hero() {
                 textDecoration: "none",
               }}
             >
-              Let's Take Flight <ArrowUpRight size={15} />
+              {t("hero.cta")} <ArrowUpRight size={15} />
             </a>
             <a
               href="#services"
@@ -64,7 +66,7 @@ export function Hero() {
                 textDecoration: "none",
               }}
             >
-              Our services
+              {t("hero.link")}
             </a>
           </div>
         </div>

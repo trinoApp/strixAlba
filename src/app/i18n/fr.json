@@ -1,0 +1,131 @@
+{
+  "nav": {
+    "brand": "StrixAlba",
+    "services": "Services",
+    "projects": "Projets",
+    "advantage": "Avantages",
+    "steps": "Étapes",
+    "cta": "Parlons-en",
+    "toggleTheme": "Changer le thème"
+  },
+  "hero": {
+    "eyebrow": "Studio Logiciel · Créé en 2026",
+    "heading": "TOUT CE DONT VOUS AVEZ BESOIN,",
+    "owlWord": "TOUT",
+    "heading2": "C'EST UNE",
+    "highlight": "IDÉE.",
+    "sub": "Nous réunissons les meilleurs talents de toutes les disciplines du développement logiciel pour vous offrir un partenaire de confiance pour chaque défi numérique.",
+    "cta": "Prenons notre envol",
+    "link": "Nos services"
+  },
+  "services": {
+    "label": "/ Services",
+    "heading": "NOTRE EXPERTISE",
+    "desc": "Toutes les disciplines sous un même toit. Pas de sous-traitance, pas de transferts, une seule équipe qui possède le produit de bout en bout.",
+    "items": [
+      { "name": "Apps\nWeb", "desc": "Applications web rapides et évolutives conçues pour une utilisation réelle. UX fluide, performances solides et systèmes qui gèrent la croissance sans friction.", "tags": ["React", "Next.js", "Node", "Python"] },
+      { "name": "Apps\nMobiles", "desc": "Applications natives et multiplateformes pour iOS et Android. Interfaces épurées, performances fiables et expériences utilisateur fluides sur tous les appareils.", "tags": ["iOS", "Android", "Flutter", "React Native"] },
+      { "name": "Systèmes\nBackend", "desc": "Une infrastructure fiable qui alimente votre produit. API, microservices et systèmes temps réel conçus pour la stabilité et l'évolutivité.", "tags": ["API", "Microservices", "Temps réel", "Cloud"] },
+      { "name": "CRM /\nERP", "desc": "Systèmes métier sur mesure adaptés à vos flux de travail. Moins de complexité, plus de contrôle et des outils qui correspondent vraiment au fonctionnement de votre équipe.", "tags": ["Workflows", "Automatisation", "Entreprise"] },
+      { "name": "IA\nIntégrations", "desc": "Intelligence intégrée directement dans votre produit. Automatisation, assistants et systèmes de décision qui réduisent le travail manuel et libèrent l'efficacité.", "tags": ["LLM", "Agents", "Automatisation", "RAG"] },
+      { "name": "XR / 3D /\nImmersif", "desc": "Expériences spatiales et interactives sur le web et la XR. Visualisation de produits, formation et narration qui augmentent l'engagement et la compréhension.", "tags": ["VR", "AR", "3D Web", "Interactif"] }
+    ]
+  },
+  "projects": {
+    "label": "/ Projets",
+    "heading": "NOS RÉALISATIONS",
+    "watch": "Voir la vidéo",
+    "items": [
+      { "name": "Trino", "desc": "Moteur de requêtes haute performance pour l'analyse distribuée sur de grands ensembles de données." },
+      { "name": "AI S2S Agent", "desc": "Système d'agents IA serveur-à-serveur pour des workflows multiplateformes automatisés." },
+      { "name": "Sites Web Interactifs", "desc": "Expériences web dynamiques et engageantes conçues pour l'impact et la performance." },
+      { "name": "BIKE VR", "desc": "Expérience de formation immersive en réalité virtuelle pour le cyclisme et la rééducation." }
+    ]
+  },
+  "advantage": {
+    "label": "/ L'Avantage Owl",
+    "heading": "POURQUOI NOUS CHOISIR",
+    "items": [
+      { "title": "Équipe senior unifiée", "desc": "Pas de chaos de sous-traitance. Une seule équipe possède le produit de bout en bout." },
+      { "title": "Collaboration éprouvée", "desc": "Des années d'expérience partagée signifient des décisions plus rapides et moins d'erreurs." },
+      { "title": "Exécution MVP d'abord", "desc": "Arrivez rapidement sur le marché. Validez avant de complexifier." },
+      { "title": "Accès direct aux développeurs", "desc": "Parlez aux personnes qui écrivent réellement le code. Pas de couches d'incompréhension." },
+      { "title": "Itération plutôt que suppositions", "desc": "Construisez sur la base de retours réels, pas de spéculations." },
+      { "title": "Conception évolutive", "desc": "Des produits qui s'adaptent à mesure que votre vision évolue." }
+    ]
+  },
+  "flightSteps": {
+    "label": "/ Comment nous travaillons",
+    "heading": "ENVOLEZ-VOUS\nÉTAPE PAR ÉTAPE",
+    "desc": "De l'idée au lancement, jusqu'à la croissance — une voie claire vers l'avant.",
+    "items": [
+      { "title": "Commencez par votre idée", "body": "Nous nous alignons sur votre vision et voyons tout le potentiel de ce que vous construisez." },
+      { "title": "Planifiez l'exécution", "body": "Nous apportons structure et clarté, traçant le chemin le plus intelligent du concept au produit." },
+      { "title": "Construisez le MVP", "body": "Nous transformons l'idée en un produit ciblé grâce à une exécution rapide et précise." },
+      { "title": "Lancez et améliorez", "body": "Nous observons l'utilisation réelle et affinons le produit grâce à un apprentissage et une itération continus." },
+      { "title": "Soutenez votre croissance", "body": "Nous restons avec votre produit à mesure qu'il évolue, garantissant qu'il évolue avec stabilité, précision et vision à long terme." }
+    ]
+  },
+  "process": {
+    "label": "/ Processus",
+    "heading": "NOTRE MÉTHODE",
+    "desc": "Honorons, d'abord asynchrone et structurée autour des retours précoces. Chaque engagement suit cette séquence.",
+    "items": [
+      { "title": "Découverte approfondie", "body": "Nous passons la première semaine dans votre codebase, vos données et vos entretiens utilisateurs. Aucune proposition tant que nous n'avons pas compris le vrai problème — pas celui énoncé." },
+      { "title": "Logiciel fonctionnel rapidement", "body": "Vous voyez du code réel et fonctionnel dès la deuxième semaine. Pas un prototype, pas un Figma. Cela crée des boucles de rétroaction honnêtes et révèle les hypothèses tôt quand elles sont faciles à corriger." },
+      { "title": "Itération incessante", "body": "Démos bimensuelles, standups asynchrones, tableau de tâches partagé. Vous avez une visibilité totale sur l'avancement sans avoir à assister à des réunions pour vous sentir informé." },
+      { "title": "Transfert propre", "body": "Votre équipe repart en possédant le système. Documentation complète, présentations d'architecture enregistrées et fenêtre de support. Nous optimisons votre indépendance, pas notre engagement perpétuel." }
+    ]
+  },
+  "team": {
+    "label": "/ Équipe",
+    "heading": "L'ÉQUIPAGE",
+    "desc": "Une petite équipe senior. Pas d'égos, pas de bureaucratie — juste des ingénieurs qui aiment construire.",
+    "members": [
+      { "name": "Ahmed Amine Kefi", "role": "Ingénieur Backend / Architecte Systèmes", "bio": "Spécialisé dans les systèmes backend à grande échelle et les architectures distribuées." },
+      { "name": "Allaa Eddine Mastouri", "role": "Développeur Full-Stack", "bio": "Construit des applications web de bout en bout avec un accent sur la performance et l'évolutivité." },
+      { "name": "Mohamed Islem Ben Jaballah", "role": "Ingénieur XR / Expériences Immersives", "bio": "Axé sur la VR et les applications 3D immersives, faisant le pont entre les graphiques temps réel et les systèmes d'interaction." },
+      { "name": "Houssem Rihani", "role": "Développeur Junior", "bio": "Supporte le développement full-stack et assiste dans l'implémentation des fonctionnalités et la maintenance." },
+      { "name": "Mohamed Ben Abdallah", "role": "Développeur CRM / ERP", "bio": "Développe des systèmes métier sur mesure adaptés aux opérations, flux de travail et besoins des entreprises." },
+      { "name": "Wassim Ben Guirat", "role": "Ingénieur Backend", "bio": "Crée des systèmes backend robustes pour les applications d'entreprise" }
+    ]
+  },
+  "story": {
+    "label": "/ Notre histoire",
+    "heading": "CONSTRUIT PAR DES AMIS.",
+    "p1": "Nous avons commencé comme des amis qui ont grandi ensemble, chacun suivant des chemins différents dans la technologie, le design et l'ingénierie, jusqu'à ce que ces chemins se croisent naturellement avec une volonté commune de construire les choses correctement.",
+    "p2": "Aujourd'hui, nous sommes un studio où diverses expertises se réunissent sous un même toit pour transformer des idées en systèmes logiciels complets. Nous construisons un partenaire à long terme pour des produits qui évoluent, grandissent et durent.",
+    "location": "Basé à : Tunisie · Tunis",
+    "founded": "Fondé : 2026"
+  },
+  "testimonials": {
+    "label": "/ Témoignages",
+    "items": [
+      { "quote": "StrixAlba opère à un niveau de profondeur technique que la plupart des agences ne peuvent pas égaler. Ils ont trouvé des problèmes dans notre architecture que nous ne savions pas que nous avions — et les ont corrigés sans drame.", "name": "Sofia Reinholt", "role": "CTO · Lumin Health" },
+      { "quote": "Nous avions été échaudés par deux entreprises précédentes. StrixAlba a été l'expérience opposée à tous égards. Communication directe, exécution senior, à l'heure.", "name": "Marcus Adeyemi", "role": "VP Ingénierie · Carta Legal" },
+      { "quote": "Le pipeline IA qu'ils ont construit est devenu un avantage concurrentiel majeur en trois mois après le lancement. Ce n'est pas un résultat d'agence typique.", "name": "Priya Nair", "role": "Fondatrice · Fieldsight" }
+    ]
+  },
+  "stats": {
+    "items": [
+      { "number": "48+", "label": "Produits livrés" },
+      { "number": "$200M+", "label": "Valeur créée pour les clients" },
+      { "number": "Zéro", "label": "Lancements manqués" },
+      { "number": "6 ans", "label": "Relation client moyenne" }
+    ]
+  },
+  "marquee": ["Génie Logiciel", "IA & Apprentissage Automatique", "Infrastructure Cloud", "Conception d'API", "Stratégie Produit", "Pipelines de Données", "Intégration LLM", "DevOps", "Architecture Système", "Audits Techniques"],
+  "cta": {
+    "label": "/ Démarrer un projet",
+    "heading": "CONSTRUISONS ENSEMBLE.",
+    "desc": "Nous prenons trois à quatre nouvelles missions par trimestre. Si vous avez quelque chose d'ambitieux en tête, envoyez-nous un mot. Nous répondons sous un jour ouvrable — toujours une personne senior, jamais un commercial.",
+    "email": "hello@whiteowl.studio",
+    "location": "Basé à : Berlin · Londres · Remote-first",
+    "response": "Temps de réponse : < 24h jours ouvrés"
+  },
+  "footer": {
+    "brand": "StrixAlba",
+    "links": ["Services", "Projets", "Avantages", "Étapes", "Histoire"],
+    "copyright": "© 2026 StrixAlba"
+  }
+}

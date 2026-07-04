@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, Languages } from "lucide-react";
 import { OwlGlyph } from "./OwlGlyph";
 import { useColors, useTheme } from "./ThemeContext";
+import { useTranslation } from "../i18n/context";
 
 export function Nav() {
   const { theme, toggle } = useTheme();
   const { DARK, FORE, DIM, BORDER, LIME } = useColors();
+  const { t, lang, setLang } = useTranslation();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -43,20 +45,20 @@ export function Nav() {
         <a href="#" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
           <OwlGlyph size={72} />
           <span style={{ fontFamily: "Unbounded, sans-serif", fontWeight: 700, fontSize: 15, color: FORE, letterSpacing: "-0.02em" }}>
-            White Owl
+            {t("nav.brand")}
           </span>
         </a>
 
         <nav style={{ display: "flex", alignItems: "center", gap: 36 }} className="hidden md:flex">
-          {["Services", "Projects", "Advantage", "Steps"].map((item) => (
+          {["services", "projects", "advantage", "steps"].map((key) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
+              key={key}
+              href={`#${key}`}
               style={{ fontFamily: "Outfit, sans-serif", fontWeight: 500, fontSize: 15, color: DIM, textDecoration: "none", transition: "color 0.15s" }}
               onMouseEnter={(e) => (e.currentTarget.style.color = FORE)}
               onMouseLeave={(e) => (e.currentTarget.style.color = DIM)}
             >
-              {item}
+              {t(`nav.${key}`)}
             </a>
           ))}
         </nav>
@@ -78,9 +80,32 @@ export function Nav() {
             }}
             onMouseEnter={(e) => (e.currentTarget.style.color = FORE)}
             onMouseLeave={(e) => (e.currentTarget.style.color = DIM)}
-            aria-label="Toggle theme"
+            aria-label={t("nav.toggleTheme")}
           >
             {theme === "dark" ? <Sun size={15} /> : <Moon size={15} />}
+          </button>
+
+          <button
+            onClick={() => setLang(lang === "en" ? "fr" : "en")}
+            style={{
+              background: "none",
+              border: `1px solid ${theme === "dark" ? "rgba(238,238,240,0.12)" : "rgba(0,0,0,0.10)"}`,
+              borderRadius: 2,
+              padding: "7px 7px",
+              cursor: "pointer",
+              color: DIM,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontFamily: "JetBrains Mono, monospace",
+              fontSize: 11,
+              fontWeight: 600,
+              transition: "color 0.15s",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = FORE)}
+            onMouseLeave={(e) => (e.currentTarget.style.color = DIM)}
+          >
+            {lang === "en" ? "FR" : "EN"}
           </button>
 
         <a
@@ -99,7 +124,7 @@ export function Nav() {
           onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
           onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
         >
-          Let's Talk
+          {t("nav.cta")}
         </a>
         </div>
       </div>

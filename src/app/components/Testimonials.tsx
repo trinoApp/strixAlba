@@ -3,12 +3,12 @@ import { CARD, DARK, FORE, DIM, LIME, BORDER } from "./constants";
 
 const TESTIMONIALS = [
   {
-    quote: "White Owl operates at a level of technical depth that most agencies cannot match. They found problems in our architecture we didn't know we had — and fixed them without drama.",
+    quote: "StrixAlba operates at a level of technical depth that most agencies cannot match. They found problems in our architecture we didn't know we had — and fixed them without drama.",
     name: "Sofia Reinholt",
     role: "CTO · Lumin Health",
   },
   {
-    quote: "We had been burned by two previous firms. White Owl was the opposite experience in every way. Direct communication, senior execution, on time.",
+    quote: "We had been burned by two previous firms. StrixAlba was the opposite experience in every way. Direct communication, senior execution, on time.",
     name: "Marcus Adeyemi",
     role: "VP Engineering · Carta Legal",
   },

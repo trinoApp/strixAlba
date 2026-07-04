@@ -1,4 +1,5 @@
 import { ThemeProvider } from "./components/ThemeContext";
+import { TranslationProvider } from "./i18n/context";
 import { Nav } from "./components/Nav";
 import { Hero } from "./components/Hero";
 import { Services } from "./components/Services";
@@ -12,17 +13,19 @@ import { Footer } from "./components/Footer";
 export default function App() {
   return (
     <ThemeProvider>
-      <div style={{ minHeight: "100vh", overflowX: "hidden" }}>
-        <Nav />
-        <Hero />
-        <Services />
-        <Projects />
-        <Advantage />
-        <FlightSteps />
-        <Team />
-        <Story />
-        <Footer />
-      </div>
+      <TranslationProvider>
+        <div style={{ minHeight: "100vh", overflowX: "hidden" }}>
+          <Nav />
+          <Hero />
+          <Services />
+          <Projects />
+          <Advantage />
+          <FlightSteps />
+          <Team />
+          <Story />
+          <Footer />
+        </div>
+      </TranslationProvider>
     </ThemeProvider>
   );
 }
