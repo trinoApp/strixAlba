@@ -50,6 +50,13 @@ export function CTA() {
 
   return (
     <section id="contact" style={{ padding: "120px 24px", borderTop: `1px solid ${BORDER}` }}>
+      <style>{`
+        #contact input::placeholder,
+        #contact textarea::placeholder {
+          color: ${DIM};
+          opacity: 0.6;
+        }
+      `}</style>
       <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }} className="flex-col lg:grid">
         <div>
           <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11, color: LIME, letterSpacing: "0.14em", textTransform: "uppercase" }}>
