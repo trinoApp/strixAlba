@@ -1,8 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import { useColors } from "./ThemeContext";
 
-const L_EYE = { cx: 454, cy: 353 };
-const R_EYE = { cx: 553, cy: 353 };
+const L_EYE = { cx: 462, cy: 364 };
+const R_EYE = { cx: 561, cy: 364 };
 const MAX_PUPIL_OFF = 18;
 const MAX_IRIS_OFF = 8;
 
@@ -13,6 +13,8 @@ export function HeroOwl() {
   const [[rPupX, rPupY], setRPup] = useState([0, 0]);
   const [[lIrisX, lIrisY], setLIris] = useState([0, 0]);
   const [[rIrisX, rIrisY], setRIris] = useState([0, 0]);
+  const [[lReflX, lReflY], setLRefl] = useState([6, -4]);
+  const [[rReflX, rReflY], setRRefl] = useState([6, -4]);
   const lastMouse = useRef({ x: 0, y: 0 });
 
   const updateEyes = (clientX: number, clientY: number) => {
@@ -27,12 +29,13 @@ export function HeroOwl() {
       const dx = clientX - eyeVpX;
       const dy = clientY - eyeVpY;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 1) return { pup: [0, 0], iris: [0, 0] };
+      if (dist < 1) return { pup: [0, 0], iris: [0, 0], refl: [6, -4] };
       const normDx = dx / dist;
       const normDy = dy / dist;
       return {
         pup: [normDx * MAX_PUPIL_OFF, normDy * MAX_PUPIL_OFF],
         iris: [normDx * MAX_IRIS_OFF, normDy * MAX_IRIS_OFF],
+        refl: [6 + normDx * 2, -4 + normDy * 2],
       };
     };
 
@@ -40,8 +43,10 @@ export function HeroOwl() {
     const r = calc(R_EYE.cx, R_EYE.cy);
     setLPup(l.pup as [number, number]);
     setLIris(l.iris as [number, number]);
+    setLRefl(l.refl as [number, number]);
     setRPup(r.pup as [number, number]);
     setRIris(r.iris as [number, number]);
+    setRRefl(r.refl as [number, number]);
   };
 
   useEffect(() => {
@@ -76,18 +81,18 @@ export function HeroOwl() {
           opacity="0.2"
         />
       </g>
-      <circle cx={L_EYE.cx} cy={L_EYE.cy} r="70" fill={LIME} opacity="0.06" />
-      <circle cx={L_EYE.cx} cy={L_EYE.cy} r="50" fill={LIME} opacity="0.1" />
+      <circle cx={L_EYE.cx} cy={L_EYE.cy} r="49" fill={LIME} opacity="0.06" />
+      <circle cx={L_EYE.cx} cy={L_EYE.cy} r="35" fill={LIME} opacity="0.1" />
       <circle cx={L_EYE.cx + lIrisX} cy={L_EYE.cy + lIrisY} r="30" fill={LIME} opacity="0.9" />
       <circle cx={L_EYE.cx + lPupX} cy={L_EYE.cy + lPupY} r="16" fill={DARK} />
       <circle cx={L_EYE.cx + lPupX} cy={L_EYE.cy + lPupY} r="9" fill="#0A1A00" />
-      <circle cx={L_EYE.cx + 14 + lPupX} cy={L_EYE.cy - 13 + lPupY} r="5" fill={LIME} opacity="0.5" />
-      <circle cx={R_EYE.cx} cy={R_EYE.cy} r="70" fill={LIME} opacity="0.06" />
-      <circle cx={R_EYE.cx} cy={R_EYE.cy} r="50" fill={LIME} opacity="0.1" />
+      <circle cx={L_EYE.cx + lPupX + lReflX} cy={L_EYE.cy + lPupY + lReflY} r="5" fill={LIME} opacity="0.5" />
+      <circle cx={R_EYE.cx} cy={R_EYE.cy} r="49" fill={LIME} opacity="0.06" />
+      <circle cx={R_EYE.cx} cy={R_EYE.cy} r="35" fill={LIME} opacity="0.1" />
       <circle cx={R_EYE.cx + rIrisX} cy={R_EYE.cy + rIrisY} r="30" fill={LIME} opacity="0.9" />
       <circle cx={R_EYE.cx + rPupX} cy={R_EYE.cy + rPupY} r="16" fill={DARK} />
       <circle cx={R_EYE.cx + rPupX} cy={R_EYE.cy + rPupY} r="9" fill="#0A1A00" />
-      <circle cx={R_EYE.cx + 14 + rPupX} cy={R_EYE.cy - 13 + rPupY} r="5" fill={LIME} opacity="0.5" />
+      <circle cx={R_EYE.cx + rPupX + rReflX} cy={R_EYE.cy + rPupY + rReflY} r="5" fill={LIME} opacity="0.5" />
     </svg>
   );
 }
