@@ -46,7 +46,10 @@ export function Hero() {
                 padding: "14px 28px",
                 borderRadius: 2,
                 textDecoration: "none",
+                transition: "transform 0.2s, box-shadow 0.2s",
               }}
+              onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.05)"; e.currentTarget.style.boxShadow = "0 0 20px rgba(170,255,0,0.3)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "none"; }}
             >
               {t("hero.cta")} <ArrowUpRight size={15} />
             </a>
@@ -64,7 +67,10 @@ export function Hero() {
                 padding: "14px 28px",
                 borderRadius: 2,
                 textDecoration: "none",
+                transition: "transform 0.2s, border-color 0.2s, color 0.2s",
               }}
+              onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.05)"; e.currentTarget.style.borderColor = LIME; e.currentTarget.style.color = LIME; }}
+              onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.borderColor = BORDER; e.currentTarget.style.color = FORE; }}
             >
               {t("hero.link")}
             </a>
