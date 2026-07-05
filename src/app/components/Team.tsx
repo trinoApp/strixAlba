@@ -25,7 +25,7 @@ const CV_MAP: Record<string, string> = {
   "Alaa Eddine Mastouri": "Alaa_Eddine_Mastouri_CV.pdf",
   "Mohamed Islem Ben Jaballah": "Mohammed_Islem_Ben_Jaballah_CV.pdf",
   "Houssem Rihani": "Houssem_Rihani_CV.pdf",
-  "Mohamed Ben Abdallah": "Mohamed-Ben-Abdallah-CV.pdf",
+  "Mohamed Ben Abdallah": "Mohammed_Ben_Abdallah_CV.pdf",
   "Wassim Ben Guirat": "Wassim_Ben_Guirat_CV.pdf",
 };
 
