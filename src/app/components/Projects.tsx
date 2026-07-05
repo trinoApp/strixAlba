@@ -6,7 +6,7 @@ import { useTranslation } from "../i18n/context";
 const PROJECT_EMBEDS: Record<string, string> = {
   "Trino": "https://www.youtube.com/embed/wLTUwfOHDxE",
   "AI S2S Agent": "https://www.youtube.com/embed/lJ24SVWjJRo",
-  "3D Websites": "https://www.youtube.com/embed/lJ24SVWjJRo",
+  "3D Websites": "https://www.youtube.com/embed/njgBJCKhmHg",
   "BIKE VR": "https://www.youtube.com/embed/4Co7GhGdaPw",
 };
 
