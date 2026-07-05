@@ -2,7 +2,7 @@ import { OwlGlyph } from "./OwlGlyph";
 import { useColors } from "./ThemeContext";
 import { useTranslation } from "../i18n/context";
 
-const LINK_KEYS = ["services", "projects", "advantage", "steps"];
+const LINK_KEYS = ["services", "projects", "advantage", "steps", "story"];
 
 export function Footer() {
   const { CARD, FORE, DIM, BORDER } = useColors();

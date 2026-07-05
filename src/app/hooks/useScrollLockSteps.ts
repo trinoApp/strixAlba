@@ -5,6 +5,7 @@ type StepState = number | null;
 interface ScrollLockOptions {
   prevSectionId?: string;
   nextSectionId?: string;
+  enabled?: boolean;
 }
 
 const STEP_DEBOUNCE_MS = 350;
@@ -19,11 +20,13 @@ export function useScrollLockSteps(
   const wasAbove = useRef(false);
   const lastStepChange = useRef(0);
   const touchStartY = useRef(0);
+  const autoNavTimer = useRef<ReturnType<typeof setTimeout>>();
   const openRef = useRef(open);
   const isLockedRef = useRef(isLocked);
   const itemCountRef = useRef(itemCount);
   const nextSectionId = options.nextSectionId ?? "team";
   const prevSectionId = options.prevSectionId ?? "advantage";
+  const enabled = options.enabled ?? true;
   const nextSectionIdRef = useRef(nextSectionId);
   const prevSectionIdRef = useRef(prevSectionId);
 
@@ -54,6 +57,12 @@ export function useScrollLockSteps(
 
   // Track section position via scroll to lock only when its top edge reaches viewport top
   useEffect(() => {
+    if (!enabled) {
+      unlockPage();
+      setIsLocked(false);
+      return;
+    }
+
     const steps = document.getElementById("steps");
     if (!steps) return;
 
@@ -90,7 +99,7 @@ export function useScrollLockSteps(
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lockPage, unlockPage]);
+  }, [lockPage, unlockPage, enabled]);
 
   // Event handlers active only while locked
   useEffect(() => {
@@ -110,25 +119,41 @@ export function useScrollLockSteps(
         if (safeStep < count - 1) {
           setOpen(safeStep + 1);
           lastStepChange.current = now;
+          if (safeStep + 1 === count - 1) {
+            clearTimeout(autoNavTimer.current);
+            autoNavTimer.current = setTimeout(() => {
+              if (!isLockedRef.current) return;
+              isLockedRef.current = false;
+              unlockPage();
+              setIsLocked(false);
+              window.scrollBy({ top: 200, behavior: "smooth" });
+            }, 400);
+          }
         } else {
           isLockedRef.current = false;
           unlockPage();
           setIsLocked(false);
-          document
-            .getElementById(nextSectionIdRef.current)
-            ?.scrollIntoView({ behavior: "smooth" });
+          window.scrollBy({ top: 200, behavior: "smooth" });
         }
       } else {
         if (safeStep > 0) {
           setOpen(safeStep - 1);
           lastStepChange.current = now;
+          if (safeStep - 1 === 0) {
+            clearTimeout(autoNavTimer.current);
+            autoNavTimer.current = setTimeout(() => {
+              if (!isLockedRef.current) return;
+              isLockedRef.current = false;
+              unlockPage();
+              setIsLocked(false);
+              window.scrollBy({ top: -200, behavior: "smooth" });
+            }, 400);
+          }
         } else {
           isLockedRef.current = false;
           unlockPage();
           setIsLocked(false);
-          document
-            .getElementById(prevSectionIdRef.current)
-            ?.scrollIntoView({ behavior: "smooth" });
+          window.scrollBy({ top: -200, behavior: "smooth" });
         }
       }
     };
@@ -197,6 +222,7 @@ export function useScrollLockSteps(
     document.addEventListener("click", handleClick, true);
 
     return () => {
+      clearTimeout(autoNavTimer.current);
       window.removeEventListener("wheel", handleWheel);
       window.removeEventListener("touchmove", handleTouchMove);
       window.removeEventListener("touchstart", handleTouchStart);

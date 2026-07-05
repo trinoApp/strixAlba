@@ -2,6 +2,7 @@ import { Plus, Minus } from "lucide-react";
 import { useScrollLockSteps } from "../hooks/useScrollLockSteps";
 import { useColors, useTheme } from "./ThemeContext";
 import { useTranslation } from "../i18n/context";
+import { useIsMobile } from "./ui/use-mobile";
 
 type StepItem = { title: string; body: string; imageSrc: string };
 
@@ -9,13 +10,14 @@ export function FlightSteps() {
   const { FORE, DIM, LIME, BORDER } = useColors();
   const { theme } = useTheme();
   const { t, dict } = useTranslation();
+  const isMobile = useIsMobile();
   const items = dict.flightSteps.items as StepItem[];
-  const [open, setOpen] = useScrollLockSteps(items.length, { prevSectionId: "advantage", nextSectionId: "team" });
+  const [open, setOpen] = useScrollLockSteps(items.length, { prevSectionId: "advantage", nextSectionId: "team", enabled: !isMobile });
 
   return (
-    <section id="steps" style={{ padding: "120px 24px", borderTop: `1px solid ${BORDER}` }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 2fr", gap: 80, alignItems: "start" }} className="flex-col md:grid">
-        <div style={{ position: "sticky", top: 100 }}>
+    <section id="steps" style={{ borderTop: `1px solid ${BORDER}` }} className="px-4 md:px-6 py-[80px] md:py-[120px]">
+      <div className="max-w-7xl mx-auto flex flex-col md:grid md:grid-cols-[1fr_2fr] gap-6 md:gap-20 items-start">
+        <div className="md:sticky md:top-24">
           <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11, color: LIME, letterSpacing: "0.14em", textTransform: "uppercase" }}>
             {t("flightSteps.label")}
           </span>
@@ -25,6 +27,7 @@ export function FlightSteps() {
           <p style={{ fontFamily: "Outfit, sans-serif", fontWeight: 300, fontSize: 14, color: DIM, lineHeight: 1.7, marginTop: 20 }}>
             {t("flightSteps.desc")}
           </p>
+          {!isMobile && (
           <div style={{ marginTop: 40, display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
             <img
               src={items[open ?? 0].imageSrc}
@@ -32,10 +35,13 @@ export function FlightSteps() {
               style={{ width: 500, height: "auto", maxHeight: 400, flexShrink: 0, filter: theme === "dark" ? "brightness(0) invert(1)" : "none" }}
             />
           </div>
+          )}
         </div>
 
         <div>
-          {items.map((step, i) => (
+          {items.map((step, i) => {
+            const show = isMobile || open === i;
+            return (
             <div key={i} style={{ borderTop: `1px solid ${BORDER}` }}>
               <button
                 onClick={() => setOpen(open === i ? null : i)}
@@ -47,20 +53,28 @@ export function FlightSteps() {
                     {step.title}
                   </span>
                 </div>
-                {open === i
+                {!isMobile && (open === i
                   ? <Minus size={16} style={{ color: LIME, flexShrink: 0 }} />
                   : <Plus size={16} style={{ color: DIM, flexShrink: 0 }} />
-                }
+                )}
               </button>
-              {open === i && (
-                <div style={{ paddingBottom: 28, paddingLeft: 56 }}>
+              {show && (
+                <div style={{ paddingBottom: 28, paddingLeft: isMobile ? 0 : 56 }}>
                   <p style={{ fontFamily: "Outfit, sans-serif", fontWeight: 300, fontSize: 15, color: DIM, lineHeight: 1.75, maxWidth: 520 }}>
                     {step.body}
                   </p>
+                  {isMobile && (
+                    <img
+                      src={step.imageSrc}
+                      alt={step.title}
+                      style={{ width: "100%", maxWidth: 400, marginTop: 20, filter: theme === "dark" ? "brightness(0) invert(1)" : "none" }}
+                    />
+                  )}
                 </div>
               )}
             </div>
-          ))}
+            );
+          })}
           <div style={{ borderTop: `1px solid ${BORDER}` }} />
         </div>
       </div>

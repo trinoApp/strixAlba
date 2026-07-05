@@ -1,4 +1,3 @@
-import { OwlGlyph } from "./OwlGlyph";
 import { useColors } from "./ThemeContext";
 import { useTranslation } from "../i18n/context";
 
@@ -6,8 +5,8 @@ export function Story() {
   const { FORE, DIM, LIME, BORDER } = useColors();
   const { t } = useTranslation();
   return (
-    <section id="story" style={{ padding: "120px 24px", borderTop: `1px solid ${BORDER}` }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }} className="flex-col lg:grid">
+    <section id="story" style={{ borderTop: `1px solid ${BORDER}` }} className="px-4 md:px-6 py-[80px] md:py-[120px]">
+      <div className="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-20 lg:items-center">
         <div>
           <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11, color: LIME, letterSpacing: "0.14em", textTransform: "uppercase" }}>
             {t("story.label")}
@@ -19,9 +18,7 @@ export function Story() {
               </span>
             ))}
           </h2>
-          <div style={{ marginTop: 32 }}>
-            <OwlGlyph size={40} glowing />
-          </div>
+
         </div>
         <div>
           <p style={{ fontFamily: "Outfit, sans-serif", fontWeight: 300, fontSize: 16, color: DIM, lineHeight: 1.75, marginBottom: 36 }}>

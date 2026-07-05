@@ -12,6 +12,8 @@ import { Story } from "./components/Story";
 import { CTA } from "./components/CTA";
 import { Footer } from "./components/Footer";
 
+history.scrollRestoration = "manual";
+
 function CursorGlow() {
   const { theme } = useTheme();
   const [pos, setPos] = useState({ x: 0, y: 0 });
@@ -61,7 +63,12 @@ function CursorGlow() {
 }
 
 export default function App() {
-  window.scrollTo(0, 0);
+  useEffect(() => {
+    if (window.location.hash) {
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+    setTimeout(() => window.scrollTo(0, 0), 0);
+  }, []);
   return (
     <ThemeProvider>
       <TranslationProvider>

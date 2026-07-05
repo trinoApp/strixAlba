@@ -6,9 +6,9 @@ export function Services() {
   const { t, dict } = useTranslation();
   const items = dict.services.items as { name: string; desc: string; tags: string[] }[];
   return (
-    <section id="services" style={{ padding: "120px 24px", borderTop: `1px solid ${BORDER}` }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, alignItems: "end", marginBottom: 72 }}>
+    <section id="services" style={{ borderTop: `1px solid ${BORDER}` }} className="px-4 py-[80px] md:px-6 md:py-[120px]">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 items-end mb-12 md:mb-[72px]">
           <div>
             <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11, color: LIME, letterSpacing: "0.14em", textTransform: "uppercase" }}>
               {t("services.label")}
@@ -22,30 +22,32 @@ export function Services() {
           </p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 1, backgroundColor: BORDER }}>
+        <div style={{ backgroundColor: BORDER }} className="grid grid-cols-1 md:grid-cols-3 gap-px">
           {items.map((s, i) => (
             <div
               key={i}
-              style={{ backgroundColor: DARK, padding: "40px 32px", cursor: "default", display: "flex", flexDirection: "column", transition: "background-color 0.2s" }}
+              style={{ backgroundColor: DARK, cursor: "default", transition: "background-color 0.2s" }}
+              className="flex flex-col px-6 py-7 md:px-8 md:py-10"
               onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = CARD)}
               onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = DARK)}
             >
               <div style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11, color: LIME, marginBottom: 24, opacity: 0.8 }}>
                 {String(i + 1).padStart(2, "0")}
               </div>
-              <div style={{ minHeight: 56 }}>
-                <h3 style={{ fontFamily: "Unbounded, sans-serif", fontWeight: 700, fontSize: 18, color: FORE, letterSpacing: "-0.02em", whiteSpace: "pre-line", lineHeight: 1.3, margin: 0 }}>
+              <div className="min-h-10 md:min-h-14">
+                <h3 style={{ fontFamily: "Unbounded, sans-serif", fontWeight: 700, color: FORE, letterSpacing: "-0.02em", whiteSpace: "pre-line", lineHeight: 1.3, margin: 0 }} className="text-base md:text-lg">
                   {s.name}
                 </h3>
               </div>
               <p style={{ fontFamily: "Outfit, sans-serif", fontWeight: 300, fontSize: 13.5, color: DIM, lineHeight: 1.7, margin: "20px 0 28px", flex: 1 }}>
                 {s.desc}
               </p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+              <div className="flex flex-wrap gap-1.5">
                 {s.tags.map((tag) => (
                   <span
                     key={tag}
-                    style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 10, color: DIM, border: `1px solid ${BORDER}`, padding: "4px 8px", letterSpacing: "0.08em" }}
+                    style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 10, color: DIM, border: `1px solid ${BORDER}`, letterSpacing: "0.08em" }}
+                    className="px-2 py-1"
                   >
                     {tag}
                   </span>

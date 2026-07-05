@@ -34,25 +34,28 @@ export function Team() {
   const { t, dict } = useTranslation();
   const members = dict.team.members as { name: string; role: string; bio: string }[];
   return (
-    <section style={{ padding: "120px 24px", borderTop: `1px solid ${BORDER}`, backgroundColor: CARD }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 72 }}>
-          <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11, color: LIME, letterSpacing: "0.14em", textTransform: "uppercase" }}>
-            {t("team.label")}
-          </span>
-          <h2 style={{ fontFamily: "Unbounded, sans-serif", fontWeight: 900, fontSize: "clamp(2rem, 4vw, 4rem)", color: FORE, letterSpacing: "-0.03em", marginTop: 16, lineHeight: 1.05 }}>
-            {t("team.heading")}
-          </h2>
-          <p style={{ fontFamily: "Outfit, sans-serif", fontWeight: 300, fontSize: 15, color: DIM, marginTop: 16, maxWidth: 500, marginInline: "auto", lineHeight: 1.7 }}>
-            {t("team.desc")}
-          </p>
+    <section style={{ borderTop: `1px solid ${BORDER}`, backgroundColor: CARD }} className="px-6 py-[120px]">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex items-end justify-between flex-wrap gap-4 mb-[72px]">
+          <div>
+            <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11, color: LIME, letterSpacing: "0.14em", textTransform: "uppercase" }}>
+              {t("team.label")}
+            </span>
+            <h2 style={{ fontFamily: "Unbounded, sans-serif", fontWeight: 900, fontSize: "clamp(2rem, 4vw, 4rem)", color: FORE, letterSpacing: "-0.03em", marginTop: 16, lineHeight: 1.05 }}>
+              {t("team.heading")}
+            </h2>
+            <p style={{ fontFamily: "Outfit, sans-serif", fontWeight: 300, fontSize: 15, color: DIM, marginTop: 16, maxWidth: 500, lineHeight: 1.7 }}>
+              {t("team.desc")}
+            </p>
+          </div>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 1, backgroundColor: BORDER }}>
+        <div style={{ backgroundColor: BORDER }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px">
           {members.map((m, i) => (
             <div
               key={i}
-              style={{ backgroundColor: DARK, padding: "36px 32px", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", transition: "background-color 0.2s" }}
+              style={{ backgroundColor: DARK, transition: "background-color 0.2s" }}
+              className="flex flex-col items-center text-center px-8 py-9"
               onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = CARD)}
               onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = DARK)}
             >
@@ -68,7 +71,7 @@ export function Team() {
               <p style={{ fontFamily: "Outfit, sans-serif", fontWeight: 300, fontSize: 14, color: DIM, lineHeight: 1.7, margin: "0 0 16px" }}>
                 {m.bio}
               </p>
-              <div style={{ display: "flex", gap: 16, marginTop: "auto" }}>
+              <div className="flex gap-4 mt-auto">
                 <a
                   href={`assets/cvs/${CV_MAP[m.name]}`}
                   target="_blank"

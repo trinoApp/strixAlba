@@ -49,7 +49,7 @@ export function CTA() {
   } as React.CSSProperties;
 
   return (
-    <section id="contact" style={{ padding: "120px 24px", borderTop: `1px solid ${BORDER}` }}>
+    <section id="contact" style={{ borderTop: `1px solid ${BORDER}` }} className="px-4 md:px-6 py-[80px] md:py-[120px]">
       <style>{`
         #contact input::placeholder,
         #contact textarea::placeholder {
@@ -57,7 +57,7 @@ export function CTA() {
           opacity: 0.6;
         }
       `}</style>
-      <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 80, alignItems: "center" }} className="flex-col lg:grid">
+      <div className="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-20 lg:items-center">
         <div>
           <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11, color: LIME, letterSpacing: "0.14em", textTransform: "uppercase" }}>
             / Start a project
@@ -93,7 +93,7 @@ export function CTA() {
               <Mail size={22} />
               contact@strixalba.com
             </a>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }} className="flex-col sm:grid">
+            <div className="flex flex-col sm:grid sm:grid-cols-2 gap-5">
               <div>
                 <label htmlFor="name" style={labelStyle}>Name</label>
                 <input
@@ -141,6 +141,7 @@ export function CTA() {
             <button
               type="submit"
               disabled={status === "submitting"}
+              className="self-center lg:self-start"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
