@@ -4,10 +4,10 @@ import { useColors } from "./ThemeContext";
 import { useTranslation } from "../i18n/context";
 
 const PROJECT_EMBEDS: Record<string, string> = {
-  "Trino": "https://www.youtube.com/embed/Q4ahV4GJ4EM",
-  "AI S2S Agent": "https://www.youtube.com/embed/oHsXkvvwNqw",
-  "3D Websites": "https://www.youtube.com/embed/o8TAmX5nngw",
-  "BIKE VR": "https://www.youtube.com/embed/GzXlkIfo2pE",
+  "Trino": "https://www.youtube.com/embed/wLTUwfOHDxE",
+  "AI S2S Agent": "https://www.youtube.com/embed/lJ24SVWjJRo",
+  "3D Websites": "https://www.youtube.com/embed/lJ24SVWjJRo",
+  "BIKE VR": "https://www.youtube.com/embed/4Co7GhGdaPw",
 };
 
 function getThumbnailUrl(name: string): string | null {
