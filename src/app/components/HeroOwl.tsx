@@ -6,7 +6,13 @@ const R_EYE = { cx: 561, cy: 364 };
 const MAX_PUPIL_OFF = 18;
 const MAX_IRIS_OFF = 8;
 
-export function HeroOwl() {
+// Full artwork bbox is x 349-675, y 286-657 inside the 1024 viewBox; the
+// cropped variant trims the transparent padding so the owl fills its container.
+const FULL_VB = { x: 0, y: 0, w: 1024, h: 1024 };
+const CROP_VB = { x: 337, y: 274, w: 350, h: 395 };
+
+export function HeroOwl({ cropped = false }: { cropped?: boolean } = {}) {
+  const vb = cropped ? CROP_VB : FULL_VB;
   const { LIME, FORE, DARK } = useColors();
   const svgRef = useRef<SVGSVGElement>(null);
   const [[lPupX, lPupY], setLPup] = useState([0, 0]);
@@ -24,8 +30,8 @@ export function HeroOwl() {
     const rect = svg.getBoundingClientRect();
 
     const calc = (vbCx: number, vbCy: number) => {
-      const eyeVpX = rect.left + (vbCx / 1024) * rect.width;
-      const eyeVpY = rect.top + (vbCy / 1024) * rect.height;
+      const eyeVpX = rect.left + ((vbCx - vb.x) / vb.w) * rect.width;
+      const eyeVpY = rect.top + ((vbCy - vb.y) / vb.h) * rect.height;
       const dx = clientX - eyeVpX;
       const dy = clientY - eyeVpY;
       const dist = Math.sqrt(dx * dx + dy * dy);
@@ -68,7 +74,7 @@ export function HeroOwl() {
   return (
     <svg
       ref={svgRef}
-      viewBox="0 0 1024 1024"
+      viewBox={`${vb.x} ${vb.y} ${vb.w} ${vb.h}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"

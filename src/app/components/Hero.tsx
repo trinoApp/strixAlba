@@ -6,7 +6,7 @@ import { useIsMobile } from "./ui/use-mobile";
 
 export function Hero() {
   const { LIME, DARK, FORE, DIM, BORDER } = useColors();
-  const { t, lang } = useTranslation();
+  const { t, lang, dict } = useTranslation();
   const isMobile = useIsMobile();
   return (
     <section className="min-h-screen flex items-center relative overflow-hidden pt-16">
@@ -15,9 +15,6 @@ export function Hero() {
       </div>
       <div className="max-w-7xl mx-auto w-full relative px-4 md:px-6">
         <div style={{ maxWidth: 760 }} className="relative">
-          <div className="block md:hidden absolute pointer-events-none" style={{ right: "-10%", top: 0, width: "60%", maxWidth: 300 }}>
-            <HeroOwl />
-          </div>
           <div className="flex items-center gap-2 mb-5">
             <span style={{ width: 28, height: 1, backgroundColor: LIME, display: "inline-block" }} />
             <span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: 11, color: LIME, letterSpacing: "0.14em", textTransform: "uppercase" }}>
@@ -25,10 +22,26 @@ export function Hero() {
             </span>
           </div>
 
-          <h1 style={{ fontFamily: "Unbounded, sans-serif", fontWeight: 900, fontSize: isMobile ? "clamp(2.2rem, 10vw, 3.3rem)" : t("hero.headingSize"), color: FORE, letterSpacing: "-0.03em", lineHeight: 1, margin: isMobile ? "0 100px 20px 0" : "0 0 20px", position: "relative" }}>
-            {t("hero.prefix") && <>{t("hero.prefix")} </>}<span style={{ color: LIME }}>{t("hero.owlWord")}</span> {t("hero.heading")}<br />
-            {t("hero.heading2")}<br />
-            <span style={{ color: LIME }}>{t("hero.highlight")}</span>
+          <h1 style={{ fontFamily: "Unbounded, sans-serif", fontWeight: 900, fontSize: isMobile ? t("hero.headingSizeMobile") : t("hero.headingSize"), color: FORE, letterSpacing: "-0.03em", lineHeight: 1, margin: "0 0 20px", position: "relative", display: isMobile ? "flow-root" : undefined }}>
+            {isMobile ? (
+              <>
+                {t("hero.mobileTop2") && <>{t("hero.mobileTop2")}<br /></>}
+                <span style={{ color: LIME }}>{t("hero.owlWord")}</span>{t("hero.mobileTop1Rest")}<br />
+                <span aria-hidden="true" className="pointer-events-none" style={{ float: "left", width: "32%", maxWidth: 130, margin: "4px 16px 4px 0" }}>
+                  <HeroOwl cropped />
+                </span>
+                {dict.hero.mobileLines.map((line) => (
+                  <span key={line}>{line}<br /></span>
+                ))}
+                <span style={{ color: LIME }}>{t("hero.highlight")}</span>
+              </>
+            ) : (
+              <>
+                {t("hero.prefix") && <>{t("hero.prefix")} </>}<span style={{ color: LIME }}>{t("hero.owlWord")}</span> {t("hero.heading")}<br />
+                {t("hero.heading2")}<br />
+                <span style={{ color: LIME }}>{t("hero.highlight")}</span>
+              </>
+            )}
           </h1>
         </div>
 
